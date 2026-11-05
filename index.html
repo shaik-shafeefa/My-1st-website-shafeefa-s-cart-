@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shafeefa Cart | Everything You Love, One Cart.</title>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOP TICKER -->
+  <div class="top-ticker">
+    <div>🚀 Worldwide Express Shipping | Free Delivery Over <span>$100</span></div>
+    <div>Promo Code: <span>SHAFEEFA10</span> for 10% Off</div>
+  </div>
+
+  <!-- HEADER / NAVBAR -->
+  <header>
+    <nav class="navbar">
+      <a onclick="switchPage('home')" class="brand-group">
+        <div class="logo">
+          🛒 Shafeefa Cart <span class="logo-badge">3D</span>
+        </div>
+        <span class="tagline">“Everything You Love, One Cart.”</span>
+      </a>
+
+      <!-- Nav Menu Links -->
+      <ul class="nav-menu">
+        <li><a id="nav-home" class="active" onclick="switchPage('home')">🏠 Home</a></li>
+        <li><a id="nav-categories" onclick="switchPage('categories')">📂 Categories</a></li>
+        <li><a id="nav-product-listing" onclick="switchPage('product-listing')">🛍️ Catalog</a></li>
+        <li><a id="nav-search" onclick="switchPage('search')">🔍 Search</a></li>
+        <li><a id="nav-wishlist" onclick="switchPage('wishlist')">❤️ Wishlist</a></li>
+        <li><a id="nav-cart" onclick="switchPage('cart')">🛒 Cart</a></li>
+        <li><a id="nav-login" onclick="switchPage('login')">👤 Login / Sign Up</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="icon-btn" onclick="switchPage('wishlist')" title="Wishlist">
+          <i class="fa-regular fa-heart"></i>
+          <span class="badge-count" id="wishlist-badge">0</span>
+        </button>
+        <button class="icon-btn" onclick="switchPage('cart')" title="Cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="badge-count" id="cart-badge">0</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Category Strip (11 Categories) -->
+    <div class="category-strip">
+      <div class="strip-inner">
+        <button class="cat-item-btn" onclick="filterCategory('Men')">👕 Men</button>
+        <button class="cat-item-btn" onclick="filterCategory('Women')">👗 Women</button>
+        <button class="cat-item-btn" onclick="filterCategory('Kids')">👶 Kids</button>
+        <button class="cat-item-btn" onclick="filterCategory('Electronics')">📱 Electronics</button>
+        <button class="cat-item-btn" onclick="filterCategory('Footwear')">👟 Footwear</button>
+        <button class="cat-item-btn" onclick="filterCategory('Beauty')">💄 Beauty</button>
+        <button class="cat-item-btn" onclick="filterCategory('Home')">🏠 Home & Kitchen</button>
+        <button class="cat-item-btn" onclick="filterCategory('Accessories')">🎒 Accessories</button>
+        <button class="cat-item-btn" onclick="filterCategory('Sports')">🏋️ Sports</button>
+        <button class="cat-item-btn" onclick="filterCategory('Grocery')">🛒 Grocery</button>
+        <button class="cat-item-btn" onclick="switchPage('offers')" style="color:var(--accent); font-weight:800;">🔥 Offers</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. HOME PAGE -->
+  <div id="page-home" class="page active">
+    <!-- HERO SLIDER -->
+    <div class="hero-container">
+      <div class="hero-slider" id="hero-slider">
+        <!-- Slide 1: Shafeefa's Cart Store Welcome -->
+        <div class="slide active">
+          <img src="images/hero-slide-2.jpg" class="slide-bg-img" alt="Shafeefa Cart Store Manager">
+          <div class="slide-content">
+            <span class="slide-tag">✨ Shafeefa's Cart Official</span>
+            <h1 class="slide-title">Quality • Trust • Style</h1>
+            <p class="slide-desc">Welcome to Shafeefa's Cart. Your premier destination for luxury fashion, modern essentials, and curated elegance — every click, a happy you.</p>
+            <div class="slide-buttons">
+              <button class="btn-primary" onclick="switchPage('product-listing')">Explore Catalog <i class="fa-solid fa-arrow-right"></i></button>
+              <button class="btn-secondary-hero" onclick="switchPage('categories')">Browse Categories</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Luxury Mall Shopping -->
+        <div class="slide">
+          <img src="images/hero-slide-1.jpg" class="slide-bg-img" alt="Luxury Mall Shopping">
+          <div class="slide-content">
+            <span class="slide-tag">🛍️ Exclusive Couture & Luxury</span>
+            <h1 class="slide-title">Elevate Your Everyday Style</h1>
+            <p class="slide-desc">Discover high-end designer attire, hand-picked accessories, and couture fashion designed to make every moment iconically stylish.</p>
+            <div class="slide-buttons">
+              <button class="btn-primary" onclick="filterCategory('Women')">Shop Women's Collection <i class="fa-solid fa-bag-shopping"></i></button>
+              <button class="btn-secondary-hero" onclick="switchPage('offers')">View Special Offers</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Footwear Release -->
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1400&q=80" class="slide-bg-img" alt="Shoes">
+          <div class="slide-content">
+            <span class="slide-tag">👟 Footwear Release</span>
+            <h1 class="slide-title">One 8 Aesthetic Shoes</h1>
+            <p class="slide-desc">Ultra-light 3D sole technology built for supreme comfort and streetwear style.</p>
+            <button class="btn-primary" onclick="viewProductDetail(1)">Explore Shoes <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Slide 4: Spatial Audio -->
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1400&q=80" class="slide-bg-img" alt="Audio">
+          <div class="slide-content">
+            <span class="slide-tag">🎧 Spatial Audio</span>
+            <h1 class="slide-title">Acoustic Pro Headphones</h1>
+            <p class="slide-desc">Immersive studio-grade sound with active noise reduction and premium finish.</p>
+            <button class="btn-primary" onclick="viewProductDetail(4)">Discover Sound <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Slide 5: Urban Outerwear -->
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1400&q=80" class="slide-bg-img" alt="Jacket">
+          <div class="slide-content">
+            <span class="slide-tag">🧥 Premium Outerwear</span>
+            <h1 class="slide-title">Urban Leather Jackets</h1>
+            <p class="slide-desc">Handcrafted luxury outerwear designed with clean minimalist cuts and genuine grain leather.</p>
+            <button class="btn-primary" onclick="viewProductDetail(2)">Shop Outerwear <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Slide 6: Flagship Tech -->
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1400&q=80" class="slide-bg-img" alt="iPhone">
+          <div class="slide-content">
+            <span class="slide-tag">📱 Flagship Tech</span>
+            <h1 class="slide-title">Titanium Smartphone Pro</h1>
+            <p class="slide-desc">Unmatched chip speeds and camera optics built in lightweight grade-5 titanium.</p>
+            <button class="btn-primary" onclick="viewProductDetail(5)">Buy Smartphone <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button class="slider-arrow prev-arrow" onclick="prevSlide()" title="Previous Slide"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="slider-arrow next-arrow" onclick="nextSlide()" title="Next Slide"><i class="fa-solid fa-chevron-right"></i></button>
+
+        <!-- Slider Dots -->
+        <div class="slider-progress">
+          <div class="dot active" onclick="setSlide(0)"></div>
+          <div class="dot" onclick="setSlide(1)"></div>
+          <div class="dot" onclick="setSlide(2)"></div>
+          <div class="dot" onclick="setSlide(3)"></div>
+          <div class="dot" onclick="setSlide(4)"></div>
+          <div class="dot" onclick="setSlide(5)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VALUE PROPOSITIONS SECTION -->
+    <div class="value-props-grid">
+      <div class="card-3d prop-card">
+        <div class="prop-icon"><i class="fa-solid fa-truck-fast"></i></div>
+        <h3>Free Worldwide Express</h3>
+        <p>Insured global delivery on all orders over $100 with live 3D package tracking.</p>
+      </div>
+      <div class="card-3d prop-card">
+        <div class="prop-icon"><i class="fa-solid fa-cube"></i></div>
+        <h3>3D Interactive Preview</h3>
+        <p>Inspect every fabric, finish, and color swatch before making a purchase decision.</p>
+      </div>
+      <div class="card-3d prop-card">
+        <div class="prop-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>30-Day Guarantee</h3>
+        <p>Hassle-free 1-click return and refund portal if you are not 100% satisfied.</p>
+      </div>
+      <div class="card-3d prop-card">
+        <div class="prop-icon"><i class="fa-solid fa-headset"></i></div>
+        <h3>24/7 VIP Concierge</h3>
+        <p>Direct priority support via live chat, email, or dedicated hotline.</p>
+      </div>
+    </div>
+
+    <!-- TRENDING PRODUCTS -->
+    <div class="section-title">
+      <div>
+        <h2>Trending Everything</h2>
+        <p>Curated 3D aesthetic products across all major departments</p>
+      </div>
+      <button class="btn-dark" onclick="switchPage('product-listing')">View All Catalog</button>
+    </div>
+
+    <div class="product-grid" id="home-product-grid"></div>
+
+    <!-- EDITORIAL LOOKBOOK BANNER -->
+    <div class="editorial-grid">
+      <div class="editorial-banner card-3d">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=80" alt="Lookbook">
+        <div class="editorial-content">
+          <span class="slide-tag">2026 Collection</span>
+          <h2 style="font-size:2.2rem; font-weight:800; margin-bottom:1rem;">Minimalist Couture & Tech</h2>
+          <p style="margin-bottom:1.5rem; color:var(--surface-secondary);">Discover the fusion between aesthetic design and functional everyday luxury.</p>
+          <button class="btn-primary" onclick="switchPage('categories')">Explore Lookbook</button>
+        </div>
+      </div>
+
+      <div class="card-3d" style="padding:2.5rem; display:flex; flex-direction:column; justify-content:center; background:var(--surface);">
+        <h3 style="font-size:1.6rem; font-weight:800; margin-bottom:1rem;">Join Shafeefa VIP</h3>
+        <p style="color:var(--text-secondary); margin-bottom:1.5rem; line-height:1.6;">Subscribe to receive secret flash discounts, new release alerts, and private drop invitations.</p>
+        <form onsubmit="event.preventDefault(); showToast('Subscribed to Shafeefa VIP!');">
+          <div class="form-group">
+            <input type="email" placeholder="Enter your email..." required>
+          </div>
+          <button class="btn-primary" style="width:100%; justify-content:center;">Subscribe Now</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- REVIEWS & TESTIMONIALS -->
+    <div class="reviews-section">
+      <div class="section-title" style="padding:0;">
+        <div>
+          <h2>Loved by 50,000+ Shoppers</h2>
+          <p>Real stories from our global aesthetic community</p>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="card-3d review-card">
+          <div class="review-user">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="User">
+            <div>
+              <strong>Sophia Lauren</strong>
+              <div style="color:var(--accent); font-size:0.8rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            </div>
+          </div>
+          <p style="color:var(--text-secondary); font-size:0.9rem; line-height:1.6;">"Shafeefa Cart's 3D product preview gave me total confidence before ordering. The leather jacket quality is insane!"</p>
+        </div>
+
+        <div class="card-3d review-card">
+          <div class="review-user">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="User">
+            <div>
+              <strong>Marcus Vance</strong>
+              <div style="color:var(--accent); font-size:0.8rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            </div>
+          </div>
+          <p style="color:var(--text-secondary); font-size:0.9rem; line-height:1.6;">"Ordered the Acoustic Headphones and arrived in 2 days in London. The checkout was seamless and the packaging was luxury."</p>
+        </div>
+
+        <div class="card-3d review-card">
+          <div class="review-user">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="User">
+            <div>
+              <strong>Elena Rostova</strong>
+              <div style="color:var(--accent); font-size:0.8rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            </div>
+          </div>
+          <p style="color:var(--text-secondary); font-size:0.9rem; line-height:1.6;">"The silk dress fits perfectly. Best shopping experience online without a doubt. 'Everything You Love, One Cart' is real!"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. CATEGORIES PAGE -->
+  <div id="page-categories" class="page">
+    <div class="section-title">
+      <div>
+        <h2>All Main Categories</h2>
+        <p>Explore thousands of items organized across 11 main departments</p>
+      </div>
+    </div>
+
+    <div class="product-grid">
+      <div class="card-3d" style="padding:2rem; text-align:center; cursor:pointer;" onclick="filterCategory('Men')">
+        <div style="font-size:3rem; margin-bottom:1rem;">👕</div>
+        <h3>Men's Collection</h3>
+        <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;">Suits, Jackets & Streetwear</p>
+      </div>
+      <div class="card-3d" style="padding:2rem; text-align:center; cursor:pointer;" onclick="filterCategory('Women')">
+        <div style="font-size:3rem; margin-bottom:1rem;">👗</div>
+        <h3>Women's Collection</h3>
+        <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;">Silk Dresses & Outerwear</p>
+      </div>
+      <div class="card-3d" style="padding:2rem; text-align:center; cursor:pointer;" onclick="filterCategory('Kids')">
+        <div style="font-size:3rem; margin-bottom:1rem;">👶</div>
+        <h3>Kids Department</h3>
+        <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;">Toys, Blocks & Clothing</p>
+      </div>
+      <div class="card-3d" style="padding:2rem; text-align:center; cursor:pointer;" onclick="filterCategory('Electronics')">
+        <div style="font-size:3rem; margin-bottom:1rem;">📱</div>
+        <h3>Electronics & Phones</h3>
+        <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;">Smartphones & Headphones</p>
+      </div>
+      <div class="card-3d" style="padding:2rem; text-align:center; cursor:pointer;" onclick="filterCategory('Footwear')">
+        <div style="font-size:3rem; margin-bottom:1rem;">👟</div>
+        <h3>Footwear Gallery</h3>
+        <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;">One 8 Sneakers & Boots</p>
+      </div>
+      <div class="card-3d" style="padding:2rem; text-align:center; cursor:pointer;" onclick="filterCategory('Beauty')">
+        <div style="font-size:3rem; margin-bottom:1rem;">💄</div>
+        <h3>Beauty & Skincare</h3>
+        <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;">Serums & Organic Formulas</p>
+      </div>
+      <div class="card-3d" style="padding:2rem; text-align:center; cursor:pointer;" onclick="filterCategory('Home')">
+        <div style="font-size:3rem; margin-bottom:1rem;">🏠</div>
+        <h3>Home & Kitchen</h3>
+        <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;">Ceramic Ware & Decor</p>
+      </div>
+      <div class="card-3d" style="padding:2rem; text-align:center; cursor:pointer;" onclick="filterCategory('Accessories')">
+        <div style="font-size:3rem; margin-bottom:1rem;">🎒</div>
+        <h3>Accessories & Watches</h3>
+        <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;">Chronographs & Bags</p>
+      </div>
+      <div class="card-3d" style="padding:2rem; text-align:center; cursor:pointer;" onclick="filterCategory('Sports')">
+        <div style="font-size:3rem; margin-bottom:1rem;">🏋️</div>
+        <h3>Sports & Fitness</h3>
+        <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;">Carbon Rackets & Gear</p>
+      </div>
+      <div class="card-3d" style="padding:2rem; text-align:center; cursor:pointer;" onclick="filterCategory('Grocery')">
+        <div style="font-size:3rem; margin-bottom:1rem;">🛒</div>
+        <h3>Artisan Grocery</h3>
+        <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;">Organics & Teas</p>
+      </div>
+      <div class="card-3d" style="padding:2rem; text-align:center; cursor:pointer;" onclick="switchPage('offers')">
+        <div style="font-size:3rem; margin-bottom:1rem;">🔥</div>
+        <h3>Flash Deals</h3>
+        <p style="color:var(--accent); font-weight:800; font-size:0.85rem; margin-top:4px;">Up to 50% OFF</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. PRODUCT LISTING / CATALOG PAGE -->
+  <div id="page-product-listing" class="page">
+    <div class="catalog-layout">
+      <!-- Sidebar Filter -->
+      <div class="filter-sidebar">
+        <div class="filter-group">
+          <h4>Department</h4>
+          <ul class="filter-list">
+            <li onclick="filterCategory('All')"><span>All Items</span> <span>(16)</span></li>
+            <li onclick="filterCategory('Men')"><span>Men</span> <span>(2)</span></li>
+            <li onclick="filterCategory('Women')"><span>Women</span> <span>(2)</span></li>
+            <li onclick="filterCategory('Footwear')"><span>Footwear</span> <span>(2)</span></li>
+            <li onclick="filterCategory('Electronics')"><span>Electronics</span> <span>(3)</span></li>
+            <li onclick="filterCategory('Beauty')"><span>Beauty</span> <span>(2)</span></li>
+            <li onclick="filterCategory('Home')"><span>Home</span> <span>(2)</span></li>
+            <li onclick="filterCategory('Accessories')"><span>Accessories</span> <span>(2)</span></li>
+          </ul>
+        </div>
+
+        <div class="filter-group">
+          <h4>Price Range</h4>
+          <input type="range" min="20" max="1000" value="1000" style="width:100%; margin-bottom:10px;" oninput="document.getElementById('price-val').innerText = '$' + this.value">
+          <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:var(--text-secondary);">
+            <span>$20</span>
+            <span id="price-val" style="font-weight:700; color:var(--text-primary);">$1000</span>
+          </div>
+        </div>
+
+        <button class="btn-dark" style="width:100%; justify-content:center;" onclick="renderProducts(products, 'catalog-grid')">Reset Filters</button>
+      </div>
+
+      <!-- Main Catalog Grid -->
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+          <h2 id="listing-category-title">All Products Catalog</h2>
+          <span style="color:var(--text-muted); font-size:0.9rem;">Showing 16 Aesthetic Items</span>
+        </div>
+        <div class="product-grid" id="catalog-grid" style="padding:0;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. PRODUCT DETAILS PAGE -->
+  <div id="page-product-details" class="page">
+    <div class="product-view-container" id="product-details-container"></div>
+  </div>
+
+  <!-- 5. WISHLIST PAGE -->
+  <div id="page-wishlist" class="page">
+    <div class="section-title">
+      <div>
+        <h2>My Saved Wishlist ❤️</h2>
+        <p>Your curated list of aesthetic items</p>
+      </div>
+    </div>
+    <div class="product-grid" id="wishlist-grid"></div>
+  </div>
+
+  <!-- 6. CART PAGE -->
+  <div id="page-cart" class="page">
+    <div class="section-title">
+      <div>
+        <h2>Your Shopping Cart 🛒</h2>
+        <p>Review items before proceeding to checkout</p>
+      </div>
+    </div>
+
+    <div class="cart-grid">
+      <div class="cart-card" id="cart-list"></div>
+
+      <div class="cart-card" style="height:fit-content;">
+        <h3 style="margin-bottom:1.5rem;">Order Summary</h3>
+        <div class="form-group" style="display:flex; gap:8px;">
+          <input type="text" id="coupon-code" placeholder="Promo Code (SHAFEEFA10)">
+          <button class="btn-dark" onclick="applyPromo()">Apply</button>
+        </div>
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="summary-subtotal">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Discount</span>
+          <span id="summary-discount" style="color:var(--accent);">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span style="color:var(--accent);">FREE</span>
+        </div>
+        <div class="summary-row">
+          <span>Tax (5%)</span>
+          <span id="summary-tax">$0.00</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total Amount</span>
+          <span id="summary-total">$0.00</span>
+        </div>
+        <button class="btn-primary" style="width:100%; justify-content:center; margin-top:1.5rem;" onclick="switchPage('checkout')">
+          Proceed to Checkout <i class="fa-solid fa-lock"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. CHECKOUT PAGE -->
+  <div id="page-checkout" class="page">
+    <div class="section-title">
+      <div>
+        <h2>Secure Checkout 🔒</h2>
+        <p>Enter your details to complete your order</p>
+      </div>
+    </div>
+
+    <div class="cart-grid" style="max-width:1100px;">
+      <div class="cart-card">
+        <h3 style="margin-bottom:1.5rem;">1. Shipping Information</h3>
+        <form id="checkout-form" onsubmit="event.preventDefault(); placeOrder();">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" value="Alex" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" value="Shafeefa" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Street Address</label>
+            <input type="text" value="742 Evergreen Terrace, Minimalist District" required>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div class="form-group">
+              <label>City</label>
+              <input type="text" value="New York" required>
+            </div>
+            <div class="form-group">
+              <label>Postal Code</label>
+              <input type="text" value="10001" required>
+            </div>
+          </div>
+
+          <h3 style="margin:2rem 0 1rem;">2. Payment Details</h3>
+          <div class="form-group">
+            <label>Select Method</label>
+            <select>
+              <option>Credit / Debit Card (Visa, MasterCard, Amex)</option>
+              <option>PayPal Express Checkout</option>
+              <option>Apple Pay / Google Pay</option>
+              <option>Cash on Delivery</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Card Number</label>
+            <input type="text" placeholder="4532 •••• •••• 8821" required>
+          </div>
+
+          <button class="btn-primary" style="width:100%; justify-content:center; margin-top:1.5rem;">
+            Complete Purchase <i class="fa-solid fa-circle-check"></i>
+          </button>
+        </form>
+      </div>
+
+      <div class="cart-card" style="height:fit-content;">
+        <h3>Order Summary</h3>
+        <p style="color:var(--text-secondary); font-size:0.85rem; margin:0.5rem 0 1.5rem;">Free Insured Delivery</p>
+        <div class="summary-row total" style="border:none;">
+          <span>Payable:</span>
+          <span id="checkout-total-val">$0.00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. LOGIN / SIGN UP PAGE -->
+  <div id="page-login" class="page">
+    <div style="max-width:460px; margin:3rem auto; padding:0 1.5rem;">
+      <div class="card-3d" style="padding:2.8rem;">
+        <h2 style="margin-bottom:0.5rem; text-align:center;">Shafeefa Account</h2>
+        <p style="color:var(--text-secondary); text-align:center; font-size:0.9rem; margin-bottom:2rem;">Sign in to access saved items & fast checkout.</p>
+        <form onsubmit="event.preventDefault(); showToast('Welcome back, Alex!'); switchPage('my-account');">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" value="alex@shafeefacart.com" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" value="••••••••" required>
+          </div>
+          <button class="btn-primary" style="width:100%; justify-content:center; margin-top:1rem;">Sign In</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. MY ACCOUNT PAGE -->
+  <div id="page-my-account" class="page">
+    <div class="section-title">
+      <div>
+        <h2>My Account Profile 👤</h2>
+        <p>Manage profile, addresses, and settings</p>
+      </div>
+    </div>
+    <div style="max-width:900px; margin:0 auto; padding:0 2rem;">
+      <div class="card-3d" style="padding:2.5rem;">
+        <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:2rem;">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" style="width:80px; height:80px; border-radius:50%; object-fit:cover;" alt="Avatar">
+          <div>
+            <h2>Alex Shafeefa</h2>
+            <p style="color:var(--accent); font-weight:700; font-size:0.9rem;">VIP Gold Member</p>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:2rem;">
+          <div class="card-3d" style="padding:1.5rem;">
+            <span style="font-size:0.85rem; color:var(--text-muted);">Active Orders</span>
+            <h3 style="font-size:1.8rem;">2 Packages</h3>
+          </div>
+          <div class="card-3d" style="padding:1.5rem;">
+            <span style="font-size:0.85rem; color:var(--text-muted);">Saved Wishlist</span>
+            <h3 style="font-size:1.8rem;" id="account-wish-count">0 Items</h3>
+          </div>
+        </div>
+        <button class="btn-dark" onclick="switchPage('my-orders')">View Orders History</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. MY ORDERS PAGE -->
+  <div id="page-my-orders" class="page">
+    <div class="section-title">
+      <div>
+        <h2>My Orders History 📦</h2>
+        <p>Track current shipments and view receipts</p>
+      </div>
+    </div>
+
+    <div style="max-width:1000px; margin:0 auto; padding:0 2rem;">
+      <div class="card-3d" style="padding:1.8rem; margin-bottom:1.5rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <strong style="font-size:1.1rem;">Order #SC-88392</strong>
+            <p style="color:var(--text-secondary); font-size:0.85rem; margin-top:4px;">Placed on Aug 5, 2026 • Total: $389.98</p>
+          </div>
+          <button class="btn-dark" onclick="switchPage('order-tracking')">Track Package</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. ORDER TRACKING PAGE -->
+  <div id="page-order-tracking" class="page">
+    <div class="section-title">
+      <div>
+        <h2>Live Package Tracking 🚚</h2>
+        <p>Order ID: #SC-88392</p>
+      </div>
+    </div>
+
+    <div style="max-width:900px; margin:0 auto; padding:0 2rem;">
+      <div class="card-3d" style="padding:2.5rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:1.5rem;">
+          <div>
+            <h3>Carrier: Express Air</h3>
+            <p style="color:var(--text-secondary); font-size:0.85rem;">Tracking #: 9400 1000 0000 0000 00</p>
+          </div>
+          <span style="background:var(--accent); color:var(--button); font-weight:800; padding:6px 16px; border-radius:20px; font-size:0.85rem;">On Schedule</span>
+        </div>
+
+        <div style="margin-top:2rem; text-align:center;">
+          <h4 style="margin-bottom:0.5rem;">Estimated Delivery Date:</h4>
+          <h2 style="color:var(--accent); font-size:2.2rem; font-weight:800;">Tomorrow by 4:00 PM</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. RETURNS & REFUNDS PAGE -->
+  <div id="page-returns" class="page">
+    <div class="section-title">
+      <div>
+        <h2>Returns & Refund Portal 🔄</h2>
+        <p>30-day hassle-free returns</p>
+      </div>
+    </div>
+
+    <div style="max-width:800px; margin:0 auto; padding:0 2rem;">
+      <div class="card-3d" style="padding:2.5rem;">
+        <form onsubmit="event.preventDefault(); showToast('Return Request Submitted successfully!');">
+          <div class="form-group">
+            <label>Order Reference ID</label>
+            <input type="text" placeholder="#SC-88392" required>
+          </div>
+          <div class="form-group">
+            <label>Reason for Return</label>
+            <select required>
+              <option>Size or fit issue</option>
+              <option>Damaged or wrong item received</option>
+              <option>Changed mind</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Details / Notes</label>
+            <textarea rows="4" placeholder="Describe the reason..."></textarea>
+          </div>
+          <button class="btn-primary" style="width:100%; justify-content:center;">Submit Return Request</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. OFFERS PAGE -->
+  <div id="page-offers" class="page">
+    <div class="section-title">
+      <div>
+        <h2>Flash Deals & Offers 🔥</h2>
+        <p>Save up to 50% on select aesthetic releases</p>
+      </div>
+    </div>
+    <div class="product-grid" id="offers-grid"></div>
+  </div>
+
+  <!-- 14. SEARCH RESULTS PAGE -->
+  <div id="page-search" class="page">
+    <div style="max-width:800px; margin:2rem auto; text-align:center; padding:0 2rem;">
+      <h2>Search Shafeefa Cart 🔍</h2>
+      <div style="margin-top:1.5rem; position:relative;">
+        <input type="text" id="search-input" placeholder="Type shoe, dress, phone, watch, skincare..." onkeyup="performSearch()" style="width:100%; padding:1.1rem 1.5rem; border-radius:16px; border:1px solid var(--border); background:var(--surface); font-size:1.05rem;">
+      </div>
+    </div>
+    <div class="product-grid" id="search-grid"></div>
+  </div>
+
+  <!-- 15. CONTACT / HELP PAGE -->
+  <div id="page-contact" class="page">
+    <div class="section-title">
+      <div>
+        <h2>Contact & FAQ Help Center 💬</h2>
+        <p>Get in touch with our team</p>
+      </div>
+    </div>
+
+    <div style="max-width:900px; margin:0 auto; padding:0 2rem;">
+      <div class="card-3d" style="padding:2.5rem; margin-bottom:3rem;">
+        <h3 style="margin-bottom:1.5rem;">Send us a Message</h3>
+        <form onsubmit="event.preventDefault(); showToast('Support Message Sent!');">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="Alex" required>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="alex@example.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea rows="4" placeholder="How can we help?" required></textarea>
+          </div>
+          <button class="btn-primary" style="width:100%; justify-content:center;">Send Message</button>
+        </form>
+      </div>
+
+      <!-- FAQ Accordion -->
+      <h3 style="margin-bottom:1.5rem;">Frequently Asked Questions</h3>
+      <div class="faq-container">
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <h4>How long does shipping take? <i class="fa-solid fa-chevron-down"></i></h4>
+          <div class="faq-answer">Standard delivery takes 2-4 business days. Express next-day air shipping is available at checkout.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <h4>What is the return policy? <i class="fa-solid fa-chevron-down"></i></h4>
+          <div class="faq-answer">We offer 30-day hassle-free returns for all items in original condition.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <h4>Are all products authentic? <i class="fa-solid fa-chevron-down"></i></h4>
+          <div class="faq-answer">Yes, 100% of products sold on Shafeefa Cart are verified for authenticity.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check" style="color:var(--accent); font-size:1.2rem;"></i>
+    <span id="toast-msg">Item added to cart!</span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom:0.8rem;">
+          🛒 Shafeefa Cart
+        </div>
+        <p style="color:var(--text-secondary); font-size:0.88rem; line-height:1.6;">
+          “Everything You Love, One Cart.” Experience next-gen 3D shopping curated with luxury fashion, devices, and lifestyle goods.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Department</h4>
+        <ul>
+          <li><a onclick="filterCategory('Men')">Men Wear</a></li>
+          <li><a onclick="filterCategory('Women')">Women Wear</a></li>
+          <li><a onclick="filterCategory('Electronics')">Electronics</a></li>
+          <li><a onclick="filterCategory('Footwear')">Footwear</a></li>
+          <li><a onclick="filterCategory('Beauty')">Beauty</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a onclick="switchPage('home')">Home</a></li>
+          <li><a onclick="switchPage('categories')">Categories</a></li>
+          <li><a onclick="switchPage('product-listing')">Product Catalog</a></li>
+          <li><a onclick="switchPage('offers')">Flash Offers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>My Account</h4>
+        <ul>
+          <li><a onclick="switchPage('my-account')">My Profile</a></li>
+          <li><a onclick="switchPage('my-orders')">My Orders</a></li>
+          <li><a onclick="switchPage('order-tracking')">Order Tracking</a></li>
+          <li><a onclick="switchPage('returns')">Returns & Refunds</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a onclick="switchPage('contact')">Contact Center</a></li>
+          <li><a onclick="switchPage('search')">Search Items</a></li>
+          <li><a onclick="switchPage('wishlist')">Saved Wishlist</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Shafeefa Cart. All Rights Reserved. Designed for aesthetic precision.</span>
+      <div>
+        <i class="fa-brands fa-instagram" style="margin-right:12px;"></i>
+        <i class="fa-brands fa-twitter" style="margin-right:12px;"></i>
+        <i class="fa-brands fa-dribbble"></i>
+      </div>
+    </div>
+  </footer>
+
+  <!-- External Script -->
+  <script src="script.js"></script>
+</body>
+</html>
